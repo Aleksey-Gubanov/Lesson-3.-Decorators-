@@ -1,0 +1,82 @@
+# ==========================================
+# 📂 Специфика текущего проекта (Логи)
+# ==========================================
+# Исключаем все файлы логов, которые генерируются декораторами
+*.log
+main.log
+log_1.log
+log_2.log
+log_3.log
+
+# ==========================================
+# 🐍 Python
+# ==========================================
+# Байт-код: кешированные файлы интерпретатора
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Распространение / упаковка
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Виртуальные окружения
+venv/
+.venv/
+env/
+.venv/
+ENV/
+
+# Тестирование и покрытие
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# mypy
+.mypy_cache/
+
+# ==========================================
+# 🛠️ Среды разработки и редакторы (IDE)
+# ==========================================
+# PyCharm / JetBrains
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim / Emacs
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ==========================================
+# 💻 Операционные системы
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
