@@ -1,20 +1,32 @@
 import os
+import datetime
 from functools import wraps
+
 
 def logger(old_function):
     @wraps(old_function)
     def new_function(*args, **kwargs):
+        # Генерируем timestamp на КАЖДЫЙ вызов функции
+        now = datetime.datetime.now()
+        timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
+
         with open('main.log', 'a', encoding='utf-8') as f:
-            f.write(f"Вызов функции: {old_function.__name__}\n")
-            f.write(f"Аргументы: args={args}, kwargs={kwargs}\n")
+            # Добавляем метку времени в начало каждой записи
+            f.write(f"[{timestamp}] Вызов функции: {old_function.__name__}\n")
+            f.write(f"[{timestamp}] Аргументы: args={args}, kwargs={kwargs}\n")
+
             result = old_function(*args, **kwargs)
-            f.write(f"Результат: {result}\n")
+
+            f.write(f"[{timestamp}] Результат: {result}\n")
             f.write("-" * 30 + "\n")
+
         return result
+
     return new_function
 
 
 def test_1():
+
     path = 'main.log'
     if os.path.exists(path):
         os.remove(path)
@@ -49,6 +61,8 @@ def test_1():
     assert 'summator' in log_file_content, 'должно записаться имя функции'
     for item in (4.3, 2.2, 6.5):
         assert str(item) in log_file_content, f'{item} должен быть записан в файл'
+
+    print("Все тесты успешно пройдены!")
 
 
 if __name__ == '__main__':
